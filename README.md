@@ -64,3 +64,8 @@ The core differentiator of this project is the LOST_RUSH state, which handles ta
 # Architecture diagram
 
 ![Accuracy](Architecture_diagram.png)
+
+#DEMO
+```
+Screencast from 04-09-2026 06_01_09 AM.webm
+```
