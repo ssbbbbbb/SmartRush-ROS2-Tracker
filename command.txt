@@ -1,0 +1,34 @@
+gpu監控：nvtop
+
+ros2影像橋接指令：
+ros2 run ros_gz_bridge parameter_bridge \
+"/iris/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image" \
+"/gimbal/cmd_pitch@std_msgs/msg/Float64]gz.msgs.Double"
+
+movros啟動：
+ros2 run mavros mavros_node --ros-args -p fcu_url:=udp://127.0.0.1:14550@
+
+載入ros2環境：
+source /opt/ros/humble/setup.bash
+source ~/gz_ws/install/setup.bash # 如果你有自定義 msg
+
+執行建立指令：
+ros2 pkg create --build-type ament_cmake drone_tracker --dependencies rclcpp sensor_msgs geometry_msgs cv_bridge mavros_msgs ament_index_cpp
+
+編譯（範例）：
+cd ~/ros2_ws
+colcon build --packages-select drone_tracker
+source install/setup.bash
+
+執行ros節點：
+ros2 run drone_tracker drone_tracker_node
+
+rqt:
+ros2 run rqt_image_view rqt_image_view
+
+gazebo:
+gz sim -v4 -r iris_runway.sdf
+
+ardupilot:
+cd ardupilot
+Tools/autotest/sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
