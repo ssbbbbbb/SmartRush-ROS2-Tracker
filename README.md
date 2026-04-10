@@ -60,3 +60,7 @@ The core differentiator of this project is the LOST_RUSH state, which handles ta
 | **TRACKING** | **Normal Operation:** The PID controllers are active, adjusting $V_x$ and Yaw to keep the target centered and at the desired distance. |
 | **LOST_RUSH** | **Prediction Mode:** Triggered when the target is lost. If the target was last seen at the screen edges, the drone continues rotating. If it vanished at the bottom (too close), the drone executes a retreat maneuver to regain visibility. |
 | **SEARCHING** | **Recovery Mode:** If the "Rush" period expires without re-detection, the drone initiates a continuous 360° yaw rotation to scan the environment. |
+
+# Architecture diagram
+
+![Accuracy](Architecture_diagram.png)
