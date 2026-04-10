@@ -2,7 +2,7 @@
 
 An autonomous drone tracking system built on ROS 2 Humble and ArduPilot. This project integrates YOLOv5 real-time object detection with a robust PID control system, featuring a specialized Predictive Tracking mechanism to maintain target lock even during brief visual occlusions.
 
-# Key Features
+## Key Features
 
 • Real-time YOLOv5 Detection: Utilizes OpenCV's DNN module to run YOLOv5n (ONNX) for high-frequency human detection.
 • Predictive Tracking (LOST_RUSH): A custom state machine that predicts target movement when visual contact is lost, preventing the drone from immediate stalling.
@@ -10,7 +10,7 @@ An autonomous drone tracking system built on ROS 2 Humble and ArduPilot. This pr
 • Gazebo Garden Integration: Fully compatible with the modern Gazebo Sim (v4) physics engine.
 • Safe-Zone Logic: Includes a "Panic Mode" that triggers an immediate retreat if the target becomes dangerously close to the drone's camera.
 
-# Prerequisites & Environment
+## Prerequisites & Environment
 
 • OS: Ubuntu 22.04
 • ROS 2: Humble
@@ -19,7 +19,7 @@ An autonomous drone tracking system built on ROS 2 Humble and ArduPilot. This pr
 • OpenCV: 4.5.4 (Optimized for Gazebo/RQT rendering compatibility)
 • MAVROS: Binary or source installation
 
-# Quick Start Guide
+## Quick Start Guide
 
 1. Launch Gazebo Simulation
 ```
@@ -52,7 +52,7 @@ source install/setup.bash
 ros2 run drone_tracker drone_tracker_node
 ```
 
-# Predictive Logic (State Machine)
+## Predictive Logic (State Machine)
 The core differentiator of this project is the LOST_RUSH state, which handles target loss through inertial prediction:
 
 | State | Behavior Description |
@@ -61,11 +61,11 @@ The core differentiator of this project is the LOST_RUSH state, which handles ta
 | **LOST_RUSH** | **Prediction Mode:** Triggered when the target is lost. If the target was last seen at the screen edges, the drone continues rotating. If it vanished at the bottom (too close), the drone executes a retreat maneuver to regain visibility. |
 | **SEARCHING** | **Recovery Mode:** If the "Rush" period expires without re-detection, the drone initiates a continuous 360° yaw rotation to scan the environment. |
 
-# Architecture diagram
+## Architecture diagram
 
 ![Accuracy](Architecture_diagram.png)
 
-#DEMO
+## DEMO
 ```
 Screencast from 04-09-2026 06_01_09 AM.webm
 ```
